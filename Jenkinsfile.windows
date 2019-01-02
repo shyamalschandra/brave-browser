@@ -3,19 +3,19 @@ pipeline {
         // disable concurrent build per branch
         disableConcurrentBuilds()
         // abort long running builds
-        timeout(time: 2, unit: 'HOURS')
+        timeout(time: 6, unit: 'HOURS')
         // add timestamps to console log
         timestamps()
     }
     agent {
         node {
             // label of node on which to build
-            label 'linux-ci'
+            label 'windows-aws'
         }
     }
     environment {
         CHANNEL = 'dev'
-        GIT_CACHE_PATH = "/var/lib/jenkins/cache"
+        GIT_CACHE_PATH = "C:\\Users\\jenkins\\cache"
         REFERRAL_API_KEY = credentials('REFERRAL_API_KEY')
         BRAVE_GOOGLE_API_KEY = credentials('npm_config_brave_google_api_key')
     }
